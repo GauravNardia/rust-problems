@@ -1,17 +1,43 @@
-use std::collections::HashMap;
 
-  
+// fn main () {
+//     let ans;
+//     let str1 = String::from("Small");
+//     {
+//         let str2 = String::from("longer");
 
-fn main() {
-    let mut users: HashMap<String, u32> = HashMap::new();
-    users.insert(String::from("Gaurav"), 21);
-    users.insert(String::from("Elon"), 56);
+//         ans = longest(str1, str2); 
+//     }
+//     println!("{}", ans); 
+// }
 
-    let first_user_age = users.get("musk");
+// fn longest(a: String, b: String) -> String {
+//     if a.len() > b.len() {
+//         return a;
+//     } else {
+//         return b;
+//     }
+// }
 
-    match first_user_age {
-        Some(age) => println!("User's age {:?}", age),
-        None => println!("User not found"),
+
+// with Liftime generic anotation ('a)
+// if 2 values lifetime are a and b then return values lifetime will be short values lifetime. intersection of both
+
+
+fn main () {
+    let ans;
+    let str1 = String::from("Small");
+    {
+        let str2 = String::from("longer");
+
+        ans = longest(&str1, &str2); 
     }
-    
-} 
+    println!("{}", ans); 
+}
+
+fn longest<'a>(a: &'a str, b: &'a str) -> &'a str {
+    if a.len() > b.len() {
+        return a;
+    } else {
+        return b;
+    }
+}
